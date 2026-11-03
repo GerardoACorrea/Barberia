@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+
+<html class="dark scroll-smooth" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TIBU BARBER — Sistema Premium de Agendamento via WhatsApp</title>
+<!-- Google Fonts: Barlow Condensed & Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,600&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#e0a358",
+            "surface-variant": "#343537",
+            "surface": "#121315",
+            "surface-container": "#1f2022",
+            "outline-variant": "#514538",
+            "tertiary-container": "#7bb5e2",
+            "on-tertiary-container": "#004669",
+            "error-container": "#93000a",
+            "inverse-on-surface": "#303033",
+            "surface-bright": "#38393b",
+            "on-surface-variant": "#d5c4b3",
+            "surface-container-high": "#292a2c",
+            "surface-tint": "#faba6d",
+            "inverse-primary": "#84540d",
+            "tertiary-fixed-dim": "#93cdfb",
+            "tertiary-fixed": "#cae6ff",
+            "inverse-surface": "#e3e2e5",
+            "on-background": "#e3e2e5",
+            "surface-container-lowest": "#0d0e10",
+            "primary-fixed-dim": "#faba6d",
+            "primary": "#ffbe70",
+            "tertiary": "#97d1ff",
+            "on-primary": "#472a00",
+            "on-surface": "#e3e2e5",
+            "secondary-fixed-dim": "#c3c6ce",
+            "on-secondary-fixed-variant": "#43474d",
+            "surface-container-low": "#1b1c1e",
+            "on-tertiary-fixed-variant": "#004b70",
+            "on-error": "#690005",
+            "outline": "#9d8e7f",
+            "on-primary-container": "#5f3a00",
+            "primary-fixed": "#ffddb9",
+            "on-tertiary-fixed": "#001e30",
+            "on-primary-fixed": "#2b1700",
+            "secondary": "#c3c6ce",
+            "on-secondary-fixed": "#181c21",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#663e00",
+            "on-secondary-container": "#b5b8c0",
+            "on-secondary": "#2d3137",
+            "surface-container-highest": "#343537",
+            "on-tertiary": "#00344f",
+            "secondary-container": "#454950",
+            "background": "#121315",
+            "surface-dim": "#121315",
+            "secondary-fixed": "#dfe2ea",
+            "error": "#ffb4ab"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "gutter": "1.5rem",
+            "margin": "3rem",
+            "space-lg": "1.5rem",
+            "gutter-mobile": "1rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "4rem"
+          },
+          fontFamily: {
+            "body-md": ["Manrope"],
+            "headline-lg": ["Barlow Condensed"],
+            "label-sm": ["Manrope"],
+            "body-lg": ["Manrope"],
+            "label-md": ["Manrope"],
+            "label-lg": ["Manrope"],
+            "display-hero-mobile": ["Barlow Condensed"],
+            "display-hero": ["Barlow Condensed"],
+            "headline-lg-mobile": ["Barlow Condensed"],
+            "body-sm": ["Manrope"],
+            "headline-md": ["Barlow Condensed"],
+            "headline-sm": ["Barlow Condensed"]
+          },
+          fontSize: {
+            "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+            "headline-lg": ["48px", { lineHeight: "52px", letterSpacing: "0.03em", fontWeight: "600" }],
+            "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.12em", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.08em", fontWeight: "600" }],
+            "label-lg": ["14px", { lineHeight: "18px", letterSpacing: "0.06em", fontWeight: "600" }],
+            "display-hero-mobile": ["44px", { lineHeight: "48px", letterSpacing: "0.03em", fontWeight: "700" }],
+            "display-hero": ["72px", { lineHeight: "76px", letterSpacing: "0.04em", fontWeight: "700" }],
+            "headline-lg-mobile": ["32px", { lineHeight: "36px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+            "headline-md": ["28px", { lineHeight: "32px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "headline-sm": ["20px", { lineHeight: "24px", letterSpacing: "0.02em", fontWeight: "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .amber-glow {
+      box-shadow: 0 0 25px -5px rgba(224, 163, 88, 0.35);
+    }
+    .ticket-edge {
+      background-image: radial-gradient(circle at 0 50%, transparent 10px, #15181D 11px), radial-gradient(circle at 100% 50%, transparent 10px, #15181D 11px);
+    }
+    /* Custom scrollbar for dark mood */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0d0e10;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #292a2c;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e0a358;
+    }
+  </style>
+</head>
+<body class="bg-[#08090B] text-on-surface antialiased font-body-md selection:bg-primary selection:text-on-primary min-h-screen flex flex-col justify-between">
+<!-- 1. HEADER (TopNavBar) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#08090B]/85 backdrop-blur-md border-b border-[#292D33]/60 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
+<!-- Brand Logo -->
+<a class="flex items-center gap-2 group" href="#">
+<span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface font-bold flex items-center">
+<span class="text-primary-container group-hover:brightness-110 transition-all">TIBU</span>
+<span class="ml-1.5 text-on-surface tracking-widest font-normal">BARBER</span>
+</span>
+<span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse ml-1"></span>
+</a>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold uppercase tracking-wider text-label-md font-label-md transition-colors" href="#inicio">Início</a>
+<a class="text-on-surface-variant hover:text-on-surface uppercase tracking-wider text-label-md font-label-md transition-colors" href="#servicos">Serviços</a>
+<a class="text-on-surface-variant hover:text-on-surface uppercase tracking-wider text-label-md font-label-md transition-colors" href="#agendamento">Agendamento</a>
+<a class="text-on-surface-variant hover:text-on-surface uppercase tracking-wider text-label-md font-label-md transition-colors" href="#informacoes">Informações</a>
+</nav>
+<!-- Trailing Cluster: Demo Toggle + CTA -->
+<div class="flex items-center gap-3 md:gap-4">
+<!-- Demo Mode Badge / Toggle -->
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-[#292D33] bg-[#15181D] hover:border-primary-container/40 text-on-surface-variant text-label-sm font-label-sm transition-all" id="demoToggleBtn" onclick="toggleDemoMode()" title="Alternar Modo de Demonstração">
+<span class="w-2 h-2 rounded-full bg-emerald-400" id="demoDot"></span>
+<span class="tracking-widest" id="demoText">DEMO ATIVA</span>
+</button>
+<!-- Primary CTA -->
+<a class="hidden sm:inline-flex items-center justify-center h-10 px-5 bg-primary-container text-on-primary-container font-label-md text-label-md font-bold tracking-wider uppercase rounded-lg hover:brightness-110 hover:shadow-[0_0_20px_rgba(224,163,88,0.35)] active:scale-[0.98] transition-all" href="#agendamento">
+          AGENDAR AGORA
+        </a>
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden p-2 text-on-surface hover:text-primary-container" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-[26px]">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Dropdown -->
+<div class="hidden md:hidden bg-[#15181D] border-b border-[#292D33] px-6 py-4 flex flex-col gap-3" id="mobileMenu">
+<a class="py-2 text-primary font-label-md uppercase tracking-wider" href="#inicio" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Início</a>
+<a class="py-2 text-on-surface-variant font-label-md uppercase tracking-wider" href="#servicos" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Serviços</a>
+<a class="py-2 text-on-surface-variant font-label-md uppercase tracking-wider" href="#agendamento" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Agendamento</a>
+<a class="py-2 text-on-surface-variant font-label-md uppercase tracking-wider" href="#informacoes" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Informações</a>
+<a class="mt-2 w-full text-center py-2.5 bg-primary-container text-on-primary-container font-label-md uppercase tracking-wider font-bold rounded" href="#agendamento" onclick="document.getElementById('mobileMenu').classList.add('hidden')">AGENDAR AGORA</a>
+</div>
+</header>
+<!-- 2. HERO SECTION -->
+<section class="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 overflow-hidden" id="inicio">
+<!-- Background Image with cinematic overlays -->
+<div class="absolute inset-0 z-0">
+<img alt="Barbeiro executando corte masculino de alta precisão em atelier escuro" class="w-full h-full object-cover object-center filter brightness-[0.55] contrast-[1.12]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG4FJ-VPyncIDf19N0WQPNJwBUKDcCMOba1KPIjMk4Na36aFZA4dXE9wqeS-G_1HV53vSc6GDlYRNNchQoYeOt9p0019CWhrsvpkmjHjf-VdR2xfXIAHV_Oe-upn1ou392uA_dnCgQ9H_Q4FU7u1s0MR2zuTZHT3joVzXbwnWxnrb0JpTZs_T4FO1BdCnPdOswgJoTWH2R6ueiXNruBeZtBrgJXsBtpKDgpGgywcY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-[#08090B]/60 to-transparent"></div>
+<div class="absolute inset-0 bg-radial-at-c from-transparent via-[#08090B]/40 to-[#08090B]"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full text-center flex flex-col items-center">
+<!-- Top Tagline with Amber Hairline Accent -->
+<div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#15181D]/80 border border-[#292D33] backdrop-blur-md mb-6 animate-fade-in">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="text-on-surface-variant text-label-sm font-label-sm tracking-[0.2em] uppercase font-semibold">PRECISÃO EM CADA DETALHE</span>
+<span class="w-4 h-[1px] bg-primary-container/80"></span>
+</div>
+<!-- Monumental Headline -->
+<h1 class="text-display-hero-mobile md:text-display-hero font-display-hero text-on-surface uppercase tracking-tight max-w-4xl leading-[1.05] mb-6">
+        SEU ESTILO. <span class="text-primary-container drop-shadow-[0_2px_18px_rgba(224,163,88,0.35)]">SEU HORÁRIO.</span>
+</h1>
+<!-- Description -->
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mb-10 leading-relaxed font-light">
+        Escolha seu serviço favorito e solicite seu agendamento de forma rápida e prática pelo WhatsApp com a garantia de atendimento cirúrgico e pontualidade.
+      </p>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-14">
+<a class="w-full sm:w-auto h-12 px-8 flex items-center justify-center gap-2 bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold tracking-wider uppercase rounded-lg hover:brightness-110 amber-glow active:scale-[0.98] transition-all" href="#agendamento">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+          AGENDAR MEU HORÁRIO
+        </a>
+<a class="w-full sm:w-auto h-12 px-8 flex items-center justify-center gap-2 bg-transparent text-on-surface border border-[#292D33] font-label-lg text-label-lg uppercase tracking-wider rounded-lg hover:border-primary-container/60 hover:text-primary transition-all" href="#servicos">
+<span class="material-symbols-outlined text-[20px]">content_cut</span>
+          VER SERVIÇOS E PREÇOS
+        </a>
+</div>
+<!-- Badges Rápidos de Confiança -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 w-full max-w-3xl pt-8 border-t border-[#292D33]/60 text-left">
+<div class="flex items-center gap-3 bg-[#15181D]/60 p-3 rounded-lg border border-white/5 backdrop-blur-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div>
+<div class="text-on-surface text-label-md font-label-md font-semibold uppercase">Confirmação WhatsApp</div>
+<div class="text-on-surface-variant text-body-sm font-body-sm text-xs">Resposta ágil em minutos</div>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-[#15181D]/60 p-3 rounded-lg border border-white/5 backdrop-blur-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<div class="text-on-surface text-label-md font-label-md font-semibold uppercase">Atendimento VIP</div>
+<div class="text-on-surface-variant text-body-sm font-body-sm text-xs">Visagismo e consultoria</div>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-[#15181D]/60 p-3 rounded-lg border border-white/5 backdrop-blur-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">local_cafe</span>
+</div>
+<div>
+<div class="text-on-surface text-label-md font-label-md font-semibold uppercase">Barba &amp; Café Bar</div>
+<div class="text-on-surface-variant text-body-sm font-body-sm text-xs">Espresso e cerveja artesanal</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. SEÇÃO DE SERVIÇOS E VALORES -->
+<section class="py-24 bg-[#08090B] relative" id="servicos">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+<div>
+<span class="text-primary-container font-label-sm text-label-sm tracking-[0.2em] uppercase font-bold block mb-2">EXPERIÊNCIA &amp; TABELA</span>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface uppercase tracking-wide">
+            ESCOLHA SEU <span class="text-primary-container">SERVIÇO.</span>
+</h2>
+<p class="text-on-surface-variant text-body-md font-body-md mt-2">Encontre a experiência ideal para o seu estilo com acabamento milimétrico.</p>
+</div>
+<div class="hidden md:flex items-center gap-2 text-on-surface-variant text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>VALORES EM REAIS (BRL) COM CONSULTORIA INCLUSA</span>
+</div>
+</div>
+<!-- Service Cards Bento / Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="serviceCardsContainer">
+<!-- Card 1: Corte Masculino -->
+<div class="service-card group relative bg-[#15181D] border border-[#292D33] p-7 rounded-xl flex flex-col justify-between hover:border-primary-container/70 hover:-translate-y-1 transition-all duration-200" data-service-duration="45 min" data-service-id="1" data-service-price="60.00" data-service-title="Corte Masculino">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-container/0 to-transparent group-hover:via-primary-container transition-all"></div>
+<div>
+<div class="flex items-start justify-between gap-4 mb-4">
+<span class="material-symbols-outlined text-[28px] text-primary-container">content_cut</span>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">R$ 60,00</span>
+<span class="block text-on-surface-variant text-label-sm font-label-sm tracking-wider">45 MIN</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wider mb-2">Corte Masculino</h3>
+<p class="text-on-surface-variant text-body-sm font-body-sm leading-relaxed mb-6">
+              Estilo sob medida com análise visagista, lavagem refrescante com produtos premium e finalização personalizada.
+            </p>
+</div>
+<button class="w-full py-2.5 px-4 bg-transparent border border-[#292D33] text-on-surface text-label-md font-label-md uppercase tracking-wider font-semibold rounded group-hover:bg-primary-container group-hover:text-on-primary-container group-hover:border-primary-container transition-all" onclick="selectServiceAndGo(1)">
+            SELECIONAR SERVIÇO
+          </button>
+</div>
+<!-- Card 2: Degradê / Fade -->
+<div class="service-card group relative bg-[#15181D] border border-[#292D33] p-7 rounded-xl flex flex-col justify-between hover:border-primary-container/70 hover:-translate-y-1 transition-all duration-200" data-service-duration="40 min" data-service-id="2" data-service-price="55.00" data-service-title="Degradê / Fade">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-container/0 to-transparent group-hover:via-primary-container transition-all"></div>
+<div>
+<div class="flex items-start justify-between gap-4 mb-4">
+<span class="material-symbols-outlined text-[28px] text-primary-container">tune</span>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">R$ 55,00</span>
+<span class="block text-on-surface-variant text-label-sm font-label-sm tracking-wider">40 MIN</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wider mb-2">Degradê / Fade</h3>
+<p class="text-on-surface-variant text-body-sm font-body-sm leading-relaxed mb-6">
+              Acabamento cirúrgico nas laterais com transição suave (Skin, Low, Mid ou High Fade) selado com navalha.
+            </p>
+</div>
+<button class="w-full py-2.5 px-4 bg-transparent border border-[#292D33] text-on-surface text-label-md font-label-md uppercase tracking-wider font-semibold rounded group-hover:bg-primary-container group-hover:text-on-primary-container group-hover:border-primary-container transition-all" onclick="selectServiceAndGo(2)">
+            SELECIONAR SERVIÇO
+          </button>
+</div>
+<!-- Card 3: Barba Terapêutica -->
+<div class="service-card group relative bg-[#15181D] border border-[#292D33] p-7 rounded-xl flex flex-col justify-between hover:border-primary-container/70 hover:-translate-y-1 transition-all duration-200" data-service-duration="35 min" data-service-id="3" data-service-price="50.00" data-service-title="Barba Terapêutica">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-container/0 to-transparent group-hover:via-primary-container transition-all"></div>
+<div>
+<div class="flex items-start justify-between gap-4 mb-4">
+<span class="material-symbols-outlined text-[28px] text-primary-container">face</span>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">R$ 50,00</span>
+<span class="block text-on-surface-variant text-label-sm font-label-sm tracking-wider">35 MIN</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wider mb-2">Barba Terapêutica</h3>
+<p class="text-on-surface-variant text-body-sm font-body-sm leading-relaxed mb-6">
+              Toalha quente aromática, alinhamento navalhado impecável, esfoliação facial e massagem com óleos nobres.
+            </p>
+</div>
+<button class="w-full py-2.5 px-4 bg-transparent border border-[#292D33] text-on-surface text-label-md font-label-md uppercase tracking-wider font-semibold rounded group-hover:bg-primary-container group-hover:text-on-primary-container group-hover:border-primary-container transition-all" onclick="selectServiceAndGo(3)">
+            SELECIONAR SERVIÇO
+          </button>
+</div>
+<!-- Card 4: Combo Corte + Barba (Destaque Exclusivo) -->
+<div class="service-card relative bg-gradient-to-b from-[#1B1F25] to-[#15181D] border-2 border-primary-container/60 p-7 rounded-xl flex flex-col justify-between hover:-translate-y-1 transition-all duration-200 shadow-[0_8px_32px_-4px_rgba(224,163,88,0.15)]" data-service-duration="75 min" data-service-id="4" data-service-price="100.00" data-service-title="Combo Corte + Barba">
+<div class="absolute -top-3 right-6 bg-primary-container text-on-primary-container font-label-sm text-label-sm px-3 py-0.5 rounded-full font-bold uppercase tracking-wider">
+            MAIS PEDIDO
+          </div>
+<div>
+<div class="flex items-start justify-between gap-4 mb-4">
+<span class="material-symbols-outlined text-[30px] text-primary-container">spa</span>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">R$ 100,00</span>
+<span class="block text-on-surface-variant text-label-sm font-label-sm tracking-wider">75 MIN</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wider mb-2">Combo Corte + Barba</h3>
+<p class="text-on-surface-variant text-body-sm font-body-sm leading-relaxed mb-6">
+              Experiência completa da casa. Corte executivo ou fade somado ao protocolo completo de toalha quente e finalização.
+            </p>
+</div>
+<button class="w-full py-2.5 px-4 bg-primary-container text-on-primary-container border border-primary-container text-label-md font-label-md uppercase tracking-wider font-bold rounded hover:brightness-110 transition-all" onclick="selectServiceAndGo(4)">
+            SELECIONAR COMBO VIP
+          </button>
+</div>
+<!-- Card 5: Alinhamento de Sobrancelha -->
+<div class="service-card group relative bg-[#15181D] border border-[#292D33] p-7 rounded-xl flex flex-col justify-between hover:border-primary-container/70 hover:-translate-y-1 transition-all duration-200" data-service-duration="15 min" data-service-id="5" data-service-price="25.00" data-service-title="Alinhamento de Sobrancelha">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-container/0 to-transparent group-hover:via-primary-container transition-all"></div>
+<div>
+<div class="flex items-start justify-between gap-4 mb-4">
+<span class="material-symbols-outlined text-[28px] text-primary-container">visibility</span>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">R$ 25,00</span>
+<span class="block text-on-surface-variant text-label-sm font-label-sm tracking-wider">15 MIN</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wider mb-2">Alinhamento de Sobrancelha</h3>
+<p class="text-on-surface-variant text-body-sm font-body-sm leading-relaxed mb-6">
+              Definição e limpeza milimétrica na navalha ou pinça, respeitando a linha e formato natural do rosto masculino.
+            </p>
+</div>
+<button class="w-full py-2.5 px-4 bg-transparent border border-[#292D33] text-on-surface text-label-md font-label-md uppercase tracking-wider font-semibold rounded group-hover:bg-primary-container group-hover:text-on-primary-container group-hover:border-primary-container transition-all" onclick="selectServiceAndGo(5)">
+            SELECIONAR SERVIÇO
+          </button>
+</div>
+<!-- Card 6: Acabamento / Pezinho -->
+<div class="service-card group relative bg-[#15181D] border border-[#292D33] p-7 rounded-xl flex flex-col justify-between hover:border-primary-container/70 hover:-translate-y-1 transition-all duration-200" data-service-duration="20 min" data-service-id="6" data-service-price="30.00" data-service-title="Acabamento / Pezinho">
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary-container/0 to-transparent group-hover:via-primary-container transition-all"></div>
+<div>
+<div class="flex items-start justify-between gap-4 mb-4">
+<span class="material-symbols-outlined text-[28px] text-primary-container">brush</span>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">R$ 30,00</span>
+<span class="block text-on-surface-variant text-label-sm font-label-sm tracking-wider">20 MIN</span>
+</div>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface uppercase tracking-wider mb-2">Acabamento / Pezinho</h3>
+<p class="text-on-surface-variant text-body-sm font-body-sm leading-relaxed mb-6">
+              Manutenção cirúrgica de contornos faciais, costeletas e nuca para manter o visual renovado entre cortes.
+            </p>
+</div>
+<button class="w-full py-2.5 px-4 bg-transparent border border-[#292D33] text-on-surface text-label-md font-label-md uppercase tracking-wider font-semibold rounded group-hover:bg-primary-container group-hover:text-on-primary-container group-hover:border-primary-container transition-all" onclick="selectServiceAndGo(6)">
+            SELECIONAR SERVIÇO
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. BOOKING WIZARD — THE CORE PRODUCT -->
+<section class="py-24 bg-[#0d0e10] border-y border-[#292D33]/60 relative" id="agendamento">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<!-- Section Title -->
+<div class="text-center max-w-3xl mx-auto mb-12">
+<span class="text-primary-container font-label-sm text-label-sm tracking-[0.25em] uppercase font-bold block mb-2">FLUXO EM TEMPO REAL</span>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface uppercase tracking-wide">
+          RESERVE SEU <span class="text-primary-container">ATENDIMENTO</span>
+</h2>
+<p class="text-on-surface-variant text-body-md font-body-md mt-2">
+          Configure seu horário em 4 etapas objetivas e envie direto ao WhatsApp da barbearia.
+        </p>
+</div>
+<!-- Stepper Indicator -->
+<div class="max-w-4xl mx-auto mb-12">
+<div class="grid grid-cols-4 gap-2 md:gap-4 relative">
+<!-- Step 1 Tab -->
+<button class="step-tab text-left p-3 md:p-4 rounded-lg bg-[#15181D] border border-primary-container text-on-surface transition-all" id="stepTab1" onclick="goToStep(1)">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container text-xs font-bold flex items-center justify-center">1</span>
+<span class="text-label-sm font-label-sm tracking-wider uppercase text-primary font-bold hidden sm:inline">ETAPA 01</span>
+</div>
+<div class="text-xs md:text-sm font-semibold truncate">Serviço</div>
+</button>
+<!-- Step 2 Tab -->
+<button class="step-tab text-left p-3 md:p-4 rounded-lg bg-[#15181D] border border-[#292D33] text-on-surface-variant transition-all" id="stepTab2" onclick="goToStep(2)">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-[#292D33] text-on-surface-variant text-xs font-bold flex items-center justify-center">2</span>
+<span class="text-label-sm font-label-sm tracking-wider uppercase hidden sm:inline">ETAPA 02</span>
+</div>
+<div class="text-xs md:text-sm font-semibold truncate">Data</div>
+</button>
+<!-- Step 3 Tab -->
+<button class="step-tab text-left p-3 md:p-4 rounded-lg bg-[#15181D] border border-[#292D33] text-on-surface-variant transition-all" id="stepTab3" onclick="goToStep(3)">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-[#292D33] text-on-surface-variant text-xs font-bold flex items-center justify-center">3</span>
+<span class="text-label-sm font-label-sm tracking-wider uppercase hidden sm:inline">ETAPA 03</span>
+</div>
+<div class="text-xs md:text-sm font-semibold truncate">Horário</div>
+</button>
+<!-- Step 4 Tab -->
+<button class="step-tab text-left p-3 md:p-4 rounded-lg bg-[#15181D] border border-[#292D33] text-on-surface-variant transition-all" id="stepTab4" onclick="goToStep(4)">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-[#292D33] text-on-surface-variant text-xs font-bold flex items-center justify-center">4</span>
+<span class="text-label-sm font-label-sm tracking-wider uppercase hidden sm:inline">ETAPA 04</span>
+</div>
+<div class="text-xs md:text-sm font-semibold truncate">Confirmação</div>
+</button>
+</div>
+</div>
+<!-- Main Interaction Split (Wizard Content + Realtime Lux Ticket) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
+<!-- Interactive Wizard Canvas (8 cols on desktop) -->
+<div class="lg:col-span-7 bg-[#15181D] border border-[#292D33] rounded-2xl p-6 md:p-8 relative min-h-[460px]">
+<!-- STEP 1: Serviço -->
+<div class="step-panel space-y-4" id="stepContent1">
+<div class="flex items-center justify-between pb-3 border-b border-[#292D33]">
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wide">1. Escolha o Serviço Desejado</h3>
+<span class="text-label-sm font-label-sm text-primary uppercase">Obrigatório</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2" id="wizardServiceList">
+<!-- Dynamically rendered or mapped -->
+</div>
+<div class="pt-4 flex justify-end">
+<button class="px-6 py-2.5 bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold rounded hover:brightness-110 transition-all flex items-center gap-2" onclick="nextStep()">
+                Avançar para Data
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 2: Data (Calendário São Paulo) -->
+<div class="step-panel hidden space-y-4" id="stepContent2">
+<div class="flex items-center justify-between pb-3 border-b border-[#292D33]">
+<div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wide">2. Selecione a Data</h3>
+<p class="text-xs text-on-surface-variant">Fuso Horário Oficial: São Paulo (BRT)</p>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded bg-[#1B1F25] border border-[#292D33] hover:border-primary-container text-on-surface" onclick="changeMonth(-1)">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="p-1.5 rounded bg-[#1B1F25] border border-[#292D33] hover:border-primary-container text-on-surface" onclick="changeMonth(1)">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Container -->
+<div class="bg-[#121315] border border-[#292D33] rounded-xl p-4">
+<div class="text-center font-bold uppercase tracking-wider text-sm text-primary mb-3" id="calendarMonthHeader">
+                Novembro 2024
+              </div>
+<!-- Week days header -->
+<div class="grid grid-cols-7 gap-1 text-center text-label-sm font-label-sm text-on-surface-variant mb-2">
+<div>DOM</div><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div>SÁB</div>
+</div>
+<!-- Days Grid -->
+<div class="grid grid-cols-7 gap-1" id="calendarDaysGrid">
+<!-- Injected via JavaScript -->
+</div>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<button class="px-5 py-2 border border-[#292D33] text-on-surface text-label-md font-label-md uppercase font-semibold rounded hover:text-primary transition-all" onclick="prevStep()">
+                Voltar
+              </button>
+<button class="px-6 py-2.5 bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold rounded hover:brightness-110 transition-all flex items-center gap-2" onclick="nextStep()">
+                Avançar para Horário
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: Horário -->
+<div class="step-panel hidden space-y-4" id="stepContent3">
+<div class="flex items-center justify-between pb-3 border-b border-[#292D33]">
+<div>
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wide">3. Escolha o Horário</h3>
+<span class="text-xs text-primary font-semibold" id="selectedDateDisplayBadge">Data: Escolha um dia</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Sessões pontuais</span>
+</div>
+<div class="p-3 bg-amber-500/10 border border-primary-container/30 rounded-lg text-xs text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">info</span>
+<span>Horários sujeitos à confirmação oficial pela barbearia via WhatsApp.</span>
+</div>
+<!-- Time Slots Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 pt-2" id="timeSlotsGrid">
+<!-- Injected by JavaScript -->
+</div>
+<div class="pt-6 flex items-center justify-between">
+<button class="px-5 py-2 border border-[#292D33] text-on-surface text-label-md font-label-md uppercase font-semibold rounded hover:text-primary transition-all" onclick="prevStep()">
+                Voltar
+              </button>
+<button class="px-6 py-2.5 bg-primary-container text-on-primary-container font-label-md text-label-md uppercase font-bold rounded hover:brightness-110 transition-all flex items-center gap-2" onclick="nextStep()">
+                Avançar para Dados
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 4: Dados & Confirmação -->
+<div class="step-panel hidden space-y-5" id="stepContent4">
+<div class="flex items-center justify-between pb-3 border-b border-[#292D33]">
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-wide">4. Seus Dados de Contato</h3>
+<span class="text-label-sm font-label-sm text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                Direto &amp; Seguro
+              </span>
+</div>
+<form class="space-y-4" id="bookingForm" onsubmit="handleFinalSubmit(event)">
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant uppercase mb-1" for="clientName">Nome Completo *</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3 text-[18px] text-on-surface-variant">person</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-[#121315] border border-[#292D33] rounded text-on-surface focus:border-primary-container focus:ring-0 text-sm placeholder:text-neutral-600 transition-all" id="clientName" oninput="updateTicketLive()" placeholder="Ex: Lucas Silveira" required="" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant uppercase mb-1" for="clientPhone">WhatsApp (DDD + Número) *</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3 text-[18px] text-on-surface-variant">phone</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-[#121315] border border-[#292D33] rounded text-on-surface focus:border-primary-container focus:ring-0 text-sm placeholder:text-neutral-600 transition-all" id="clientPhone" oninput="formatAndSyncPhone(this)" placeholder="(11) 98765-4321" required="" type="tel"/>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant uppercase mb-1" for="clientNotes">Observações ou Preferências (Opcional)</label>
+<textarea class="w-full px-3 py-2 bg-[#121315] border border-[#292D33] rounded text-on-surface focus:border-primary-container focus:ring-0 text-sm placeholder:text-neutral-600 resize-none transition-all" id="clientNotes" oninput="updateTicketLive()" placeholder="Ex: Fade bem baixo, navalha na barba..." rows="2"></textarea>
+</div>
+<!-- Barbershop Number Demo Config -->
+<div class="p-3 bg-[#121315] border border-[#292D33] rounded text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="text-on-surface-variant">
+<span class="text-on-surface font-semibold">Envio para Barbearia:</span>
+<span class="text-primary ml-1" id="targetBarberDisplay">+55 11 99999-8888 (Demo)</span>
+</div>
+<button class="text-label-sm font-label-sm text-primary underline uppercase tracking-wider text-left sm:text-right" onclick="openBarberPhoneConfigModal()" type="button">
+                  Alterar Número do Barbeiro
+                </button>
+</div>
+<div class="pt-3 flex items-center justify-between">
+<button class="px-5 py-2 border border-[#292D33] text-on-surface text-label-md font-label-md uppercase font-semibold rounded hover:text-primary transition-all" onclick="prevStep()" type="button">
+                  Voltar
+                </button>
+<button class="px-7 py-3 bg-primary-container text-on-primary-container font-label-lg text-label-lg uppercase font-bold rounded-lg hover:brightness-110 amber-glow active:scale-[0.98] transition-all flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+                  SOLICITAR PELO WHATSAPP
+                </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Realtime Luxury Ticket Summary (5 cols on desktop) -->
+<div class="lg:col-span-5">
+<div class="bg-[#15181D] border border-primary-container/40 rounded-2xl p-6 relative overflow-hidden shadow-2xl">
+<!-- Decorative Accent line -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-container via-amber-200 to-primary-container"></div>
+<div class="flex items-center justify-between border-b border-[#292D33] pb-4 mb-5">
+<div>
+<span class="font-headline-md text-headline-md font-bold tracking-wider uppercase text-on-surface flex items-center">
+<span class="text-primary">TIBU</span>
+<span class="ml-1 text-on-surface font-normal">BARBER</span>
+</span>
+<span class="text-[10px] tracking-widest uppercase text-on-surface-variant block">COMPROVANTE DE SOLICITAÇÃO</span>
+</div>
+<span class="px-2 py-1 rounded bg-primary-container/10 border border-primary-container/30 text-primary-container text-[11px] font-bold uppercase tracking-wider">
+                VOUCHER VIP
+              </span>
+</div>
+<!-- Ticket Items -->
+<div class="space-y-4 text-sm font-body-md">
+<div class="flex justify-between items-start pb-3 border-b border-[#292D33]/60">
+<span class="text-on-surface-variant font-label-md uppercase">Serviço:</span>
+<span class="text-on-surface font-semibold text-right" id="ticketService">Corte Masculino</span>
+</div>
+<div class="flex justify-between items-center pb-3 border-b border-[#292D33]/60">
+<span class="text-on-surface-variant font-label-md uppercase">Investimento:</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="ticketPrice">R$ 60,00</span>
+</div>
+<div class="flex justify-between items-center pb-3 border-b border-[#292D33]/60">
+<span class="text-on-surface-variant font-label-md uppercase">Duração Estimada:</span>
+<span class="text-on-surface font-semibold" id="ticketDuration">45 min</span>
+</div>
+<div class="flex justify-between items-center pb-3 border-b border-[#292D33]/60">
+<span class="text-on-surface-variant font-label-md uppercase">Data Agendada:</span>
+<span class="text-primary font-bold text-right" id="ticketDate">Selecione na etapa 2</span>
+</div>
+<div class="flex justify-between items-center pb-3 border-b border-[#292D33]/60">
+<span class="text-on-surface-variant font-label-md uppercase">Horário:</span>
+<span class="text-on-surface font-semibold bg-[#121315] px-2 py-0.5 rounded border border-[#292D33]" id="ticketTime">--:--</span>
+</div>
+<div class="flex justify-between items-start pb-3 border-b border-[#292D33]/60">
+<span class="text-on-surface-variant font-label-md uppercase">Cliente:</span>
+<span class="text-on-surface font-medium text-right" id="ticketClient">Aguardando preenchimento</span>
+</div>
+<div class="flex justify-between items-start pb-3 border-b border-[#292D33]/60">
+<span class="text-on-surface-variant font-label-md uppercase">WhatsApp:</span>
+<span class="text-on-surface font-medium text-right" id="ticketPhone">--</span>
+</div>
+<div class="text-xs text-on-surface-variant bg-[#121315]/80 p-3 rounded border border-white/5">
+<span class="font-semibold text-on-surface block mb-0.5">Observações:</span>
+<p class="italic text-neutral-400" id="ticketNotes">Nenhuma observação informada.</p>
+</div>
+</div>
+<!-- Fine print note -->
+<div class="mt-6 pt-4 border-t border-[#292D33] text-center">
+<p class="text-[11px] text-on-surface-variant uppercase tracking-wider leading-relaxed">
+                * Seu horário será confirmado diretamente pela barbearia após o envio no WhatsApp.
+              </p>
+</div>
+<!-- Instant Trigger Button from ticket -->
+<button class="mt-4 w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-label-md text-label-md uppercase tracking-wider font-bold rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20 active:scale-[0.98]" onclick="handleTicketDirectSubmit()">
+<span class="material-symbols-outlined text-[18px]">send</span>
+              ENVIAR SOLICITAÇÃO AGORA
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. SEÇÃO DE INFORMAÇÕES IMPORTANTES -->
+<section class="py-24 bg-[#08090B]" id="informacoes">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="text-primary-container font-label-sm text-label-sm tracking-[0.25em] uppercase font-bold block mb-2">LOCAL &amp; CONVENIÊNCIAS</span>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface uppercase tracking-wide">
+          DETALHES DO <span class="text-primary-container">ATELIER</span>
+</h2>
+<p class="text-on-surface-variant text-body-md font-body-md mt-2">
+          Estrutura pensada para relaxamento, exclusividade e pontualidade no coração de São Paulo.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Horários -->
+<div class="bg-[#15181D] border border-[#292D33] p-6 rounded-xl hover:border-primary-container/40 transition-all flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[24px]">schedule</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wide mb-1">Horário de Funcionamento</h4>
+<p class="text-on-surface text-body-sm font-semibold">Terça a Sábado: 09h às 20h</p>
+<p class="text-on-surface-variant text-xs mt-1">Domingos e Segundas: Fechado para manutenções e cursos.</p>
+</div>
+</div>
+<!-- Endereço -->
+<div class="bg-[#15181D] border border-[#292D33] p-6 rounded-xl hover:border-primary-container/40 transition-all flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[24px]">pin_drop</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wide mb-1">Localização Privilegiada</h4>
+<p class="text-on-surface text-body-sm font-semibold">Rua Oscar Freire, 1200 - Jardins</p>
+<p class="text-on-surface-variant text-xs mt-1">São Paulo - SP | Próximo à estação Oscar Freire (Linha 4-Amarela).</p>
+</div>
+</div>
+<!-- Manobrista -->
+<div class="bg-[#15181D] border border-[#292D33] p-6 rounded-xl hover:border-primary-container/40 transition-all flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[24px]">directions_car</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wide mb-1">Valet &amp; Estacionamento</h4>
+<p class="text-on-surface text-body-sm font-semibold">Manobrista cortesia na porta</p>
+<p class="text-on-surface-variant text-xs mt-1">Segurança e facilidade de acesso para clientes agendados.</p>
+</div>
+</div>
+<!-- Bebidas Cortesia -->
+<div class="bg-[#15181D] border border-[#292D33] p-6 rounded-xl hover:border-primary-container/40 transition-all flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[24px]">sports_bar</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wide mb-1">Espresso &amp; Cerveja Artesanal</h4>
+<p class="text-on-surface text-body-sm font-semibold">Carta de boas-vindas cortesia</p>
+<p class="text-on-surface-variant text-xs mt-1">Café espresso com grãos selecionados e chopp artesanal gelado.</p>
+</div>
+</div>
+<!-- Conexão & Climatização -->
+<div class="bg-[#15181D] border border-[#292D33] p-6 rounded-xl hover:border-primary-container/40 transition-all flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[24px]">wifi</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wide mb-1">Ambiente &amp; Conforto</h4>
+<p class="text-on-surface text-body-sm font-semibold">Wi-Fi Ultra Rápido &amp; Ar Central</p>
+<p class="text-on-surface-variant text-xs mt-1">Acústica planejada e tomadas em todos os pontos de espera.</p>
+</div>
+</div>
+<!-- Instagram & Redes -->
+<div class="bg-[#15181D] border border-[#292D33] p-6 rounded-xl hover:border-primary-container/40 transition-all flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[24px]">photo_camera</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wide mb-1">Comunidade &amp; Tendências</h4>
+<p class="text-on-surface text-body-sm font-semibold">Instagram: @tibubarber</p>
+<p class="text-on-surface-variant text-xs mt-1">Galeria diária de transformações e cortes autorais.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MODAL DE CONFIGURAÇÃO DE NÚMERO DO BARBEIRO (DEMO / REAL) -->
+<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4" id="barberPhoneModal">
+<div class="bg-[#15181D] border border-[#292D33] max-w-md w-full rounded-2xl p-6 shadow-2xl">
+<div class="flex items-center justify-between pb-3 border-b border-[#292D33] mb-4">
+<h3 class="font-headline-sm text-headline-sm uppercase text-on-surface">Configurar WhatsApp do Barbeiro</h3>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeBarberPhoneConfigModal()">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<p class="text-xs text-on-surface-variant mb-4">
+        Defina o número que receberá a mensagem pré-formatada. (Formato internacional, apenas dígitos. Exemplo para Brasil: <span class="text-primary font-mono">5511999998888</span>).
+      </p>
+<div class="space-y-3">
+<label class="block text-label-sm font-label-sm uppercase text-on-surface-variant" for="modalPhoneInput">Número do Barbeiro</label>
+<input class="w-full px-3 py-2 bg-[#121315] border border-[#292D33] rounded text-on-surface font-mono text-sm focus:border-primary-container focus:ring-0" id="modalPhoneInput" type="text" value="5511999998888"/>
+<div class="flex items-center gap-2 pt-2">
+<button class="flex-1 py-2.5 bg-primary-container text-on-primary-container font-label-md uppercase font-bold rounded hover:brightness-110" onclick="saveBarberPhoneConfig()">
+            Salvar Número
+          </button>
+<button class="px-4 py-2.5 border border-[#292D33] text-on-surface font-label-md uppercase rounded" onclick="closeBarberPhoneConfigModal()">
+            Cancelar
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. FOOTER (Conforme especificado com créditos para Gera Correa Dev) -->
+<footer class="bg-surface-container-lowest border-t border-[#292D33]/40 text-on-surface-variant">
+<div class="max-w-7xl mx-auto px-6 md:px-12 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<!-- Logo + Tagline -->
+<div class="flex flex-col items-center md:items-start gap-2">
+<a class="font-headline-sm text-headline-sm tracking-widest uppercase text-on-surface font-semibold flex items-center" href="#">
+<span class="text-primary">TIBU</span>
+<span class="ml-1 text-on-surface">BARBER</span>
+</a>
+<p class="text-xs text-on-surface-variant tracking-wider">
+          Precisão em cada detalhe. Atelier de estilo masculino contemporâneo.
+        </p>
+</div>
+<!-- Quick Links -->
+<div class="flex flex-wrap justify-center items-center gap-6 text-label-sm font-label-sm uppercase tracking-widest">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#servicos">Serviços</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#agendamento">Agendamento</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#informacoes">Horários</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="https://instagram.com" rel="noopener noreferrer" target="_blank">Instagram</a>
+</div>
+<!-- Conversion & Developer Credits -->
+<div class="flex flex-col items-center md:items-end gap-1.5 text-center md:text-right">
+<p class="text-xs text-neutral-400">
+          Website desenvolvido por <span class="text-on-surface font-semibold">Gera Correa Dev</span>.
+        </p>
+<a class="inline-flex items-center gap-1.5 text-xs text-primary font-semibold hover:underline tracking-wide group" href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20Gera%20Correa%20Dev!%20Vi%20o%20sistema%20da%20Tibu%20Barber%20e%20quero%20um%20site%20assim." rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px] group-hover:translate-x-0.5 transition-transform">arrow_outward</span>
+          Quero um site assim
+        </a>
+</div>
+</div>
+<!-- Micro copyright row -->
+<div class="border-t border-[#292D33]/20 py-4 text-center text-[11px] text-neutral-500">
+      © 2024 TIBU BARBER ATELIER. TODOS OS DIREITOS RESERVADOS.
+    </div>
+</footer>
+<!-- JAVASCRIPT: TOTAL INTERATIVIDADE (WIZARD, CALENDÁRIO, SLOTS, MÁSCARAS E WHATSAPP) -->
+<script>
+    // ESTADO GLOBAL DA APLICAÇÃO
+    const SERVICES_DATA = [
+      { id: 1, title: "Corte Masculino", price: 60.00, duration: "45 min", desc: "Estilo sob medida com lavagem e finalização premium" },
+      { id: 2, title: "Degradê / Fade", price: 55.00, duration: "40 min", desc: "Acabamento cirúrgico nas laterais e transição suave" },
+      { id: 3, title: "Barba Terapêutica", price: 50.00, duration: "35 min", desc: "Toalha quente, alinhamento navalhado e óleos nobres" },
+      { id: 4, title: "Combo Corte + Barba", price: 100.00, duration: "75 min", desc: "Experiência completa com consultoria visagista" },
+      { id: 5, title: "Alinhamento de Sobrancelha", price: 25.00, duration: "15 min", desc: "Definição natural e limpeza milimétrica" },
+      { id: 6, title: "Acabamento / Pezinho", price: 30.00, duration: "20 min", desc: "Manutenção de contornos e nuca impecável" }
+    ];
+
+    const AVAILABLE_HOURS = [
+      "09:00", "10:00", "11:00", "13:00", "14:00", 
+      "15:00", "16:00", "17:00", "18:00", "19:00"
+    ];
+
+    let currentStep = 1;
+    let selectedService = SERVICES_DATA[0]; // Default Corte Masculino
+    let selectedDate = null;
+    let selectedTime = null;
+    let isDemoMode = true;
+    let barberWhatsAppNumber = "5511999998888"; // Padrão Demo configurável
+
+    // Estado do Calendário de São Paulo
+    const nowBRT = new Date();
+    let calendarYear = nowBRT.getFullYear();
+    let calendarMonth = nowBRT.getMonth(); // 0-indexed
+
+    // Inicialização ao carregar a página
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Renderizar serviços no Wizard
+      renderWizardServices();
+      // 2. Pré-selecionar data de amanhã se for hoje
+      const defaultDate = new Date();
+      defaultDate.setDate(defaultDate.getDate() + 1);
+      // Se for domingo (0) ou segunda (1), avança para terça (2)
+      if (defaultDate.getDay() === 0) defaultDate.setDate(defaultDate.getDate() + 2);
+      if (defaultDate.getDay() === 1) defaultDate.setDate(defaultDate.getDate() + 1);
+      
+      selectedDate = defaultDate;
+      renderCalendar();
+      renderTimeSlots();
+      updateTicketLive();
+    });
+
+    // 1. Renderizar Serviços na Etapa 1 do Wizard
+    function renderWizardServices() {
+      const container = document.getElementById("wizardServiceList");
+      if (!container) return;
+      container.innerHTML = "";
+
+      SERVICES_DATA.forEach(srv => {
+        const isSelected = selectedService && selectedService.id === srv.id;
+        const card = document.createElement("div");
+        card.className = `cursor-pointer p-3.5 rounded-lg border text-left transition-all ${
+          isSelected 
+            ? "border-primary-container bg-primary-container/10 ring-1 ring-primary-container" 
+            : "border-[#292D33] bg-[#121315] hover:border-[#38393b]"
+        }`;
+        card.onclick = () => {
+          selectedService = srv;
+          renderWizardServices();
+          updateTicketLive();
+        };
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-semibold text-sm text-on-surface truncate">${srv.title}</span>
+            <span class="text-xs font-bold text-primary">R$ ${srv.price.toFixed(2).replace('.', ',')}</span>
+          </div>
+          <div class="flex items-center justify-between text-xs text-on-surface-variant">
+            <span>${srv.duration}</span>
+            ${isSelected ? '<span class="text-[10px] bg-primary text-on-primary font-bold px-1.5 py-0.5 rounded">Selecionado</span>' : ''}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Seleção direta a partir dos cards da Seção de Serviços
+    function selectServiceAndGo(serviceId) {
+      const found = SERVICES_DATA.find(s => s.id === serviceId);
+      if (found) {
+        selectedService = found;
+        renderWizardServices();
+        updateTicketLive();
+        goToStep(2); // Avança direto para a Data
+        const wizardElement = document.getElementById("agendamento");
+        if (wizardElement) {
+          wizardElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    // NAVEGAÇÃO DE ETAPAS DO WIZARD
+    function goToStep(stepNumber) {
+      // Validações básicas para avanço
+      if (stepNumber > 1 && !selectedService) {
+        alert("Por favor, selecione um serviço na Etapa 01.");
+        return;
+      }
+      if (stepNumber > 2 && !selectedDate) {
+        alert("Por favor, selecione uma data no calendário.");
+        return;
+      }
+      if (stepNumber > 3 && !selectedTime) {
+        alert("Por favor, selecione um horário disponível na Etapa 03.");
+        return;
+      }
+
+      currentStep = stepNumber;
+
+      // Ocultar todos os painéis e exibir o atual
+      for (let i = 1; i <= 4; i++) {
+        const panel = document.getElementById(`stepContent${i}`);
+        const tab = document.getElementById(`stepTab${i}`);
+        
+        if (panel) {
+          if (i === currentStep) {
+            panel.classList.remove("hidden");
+          } else {
+            panel.classList.add("hidden");
+          }
+        }
+
+        if (tab) {
+          if (i === currentStep) {
+            tab.className = "step-tab text-left p-3 md:p-4 rounded-lg bg-[#15181D] border border-primary-container text-on-surface transition-all";
+            const numSpan = tab.querySelector("span:first-child");
+            if (numSpan) numSpan.className = "w-6 h-6 rounded-full bg-primary-container text-on-primary-container text-xs font-bold flex items-center justify-center";
+          } else if (i < currentStep) {
+            tab.className = "step-tab text-left p-3 md:p-4 rounded-lg bg-[#15181D] border border-emerald-500/40 text-emerald-400 transition-all";
+            const numSpan = tab.querySelector("span:first-child");
+            if (numSpan) numSpan.className = "w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center";
+          } else {
+            tab.className = "step-tab text-left p-3 md:p-4 rounded-lg bg-[#15181D] border border-[#292D33] text-on-surface-variant transition-all";
+            const numSpan = tab.querySelector("span:first-child");
+            if (numSpan) numSpan.className = "w-6 h-6 rounded-full bg-[#292D33] text-on-surface-variant text-xs font-bold flex items-center justify-center";
+          }
+        }
+      }
+
+      if (currentStep === 3) {
+        updateDateDisplayBadge();
+        renderTimeSlots();
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < 4) {
+        goToStep(currentStep + 1);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 1) {
+        goToStep(currentStep - 1);
+      }
+    }
+
+    // 2. CALENDÁRIO INTERATIVO (Fuso de São Paulo)
+    const MONTH_NAMES = [
+      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    function changeMonth(delta) {
+      calendarMonth += delta;
+      if (calendarMonth < 0) {
+        calendarMonth = 11;
+        calendarYear--;
+      } else if (calendarMonth > 11) {
+        calendarMonth = 0;
+        calendarYear++;
+      }
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const header = document.getElementById("calendarMonthHeader");
+      const grid = document.getElementById("calendarDaysGrid");
+      if (!header || !grid) return;
+
+      header.textContent = `${MONTH_NAMES[calendarMonth]} ${calendarYear}`;
+      grid.innerHTML = "";
+
+      const firstDayOfMonth = new Date(calendarYear, calendarMonth, 1).getDay();
+      const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+
+      // Data de Hoje para bloqueio
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      // Preenchimento de espaços vazios antes do dia 1
+      for (let i = 0; i < firstDayOfMonth; i++) {
+        const emptyCell = document.createElement("div");
+        emptyCell.className = "h-9";
+        grid.appendChild(emptyCell);
+      }
+
+      // Renderizar cada dia
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateObj = new Date(calendarYear, calendarMonth, day);
+        dateObj.setHours(0, 0, 0, 0);
+
+        const dayOfWeek = dateObj.getDay();
+        const isPast = dateObj < today;
+        const isClosed = (dayOfWeek === 0 || dayOfWeek === 1); // Fechado domingo (0) e segunda (1)
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = day;
+
+        const isChosen = selectedDate && 
+          selectedDate.getFullYear() === calendarYear &&
+          selectedDate.getMonth() === calendarMonth &&
+          selectedDate.getDate() === day;
+
+        if (isPast || isClosed) {
+          btn.disabled = true;
+          btn.className = "h-9 text-xs rounded text-neutral-600 bg-neutral-900/30 cursor-not-allowed opacity-40";
+          if (isClosed && !isPast) {
+            btn.title = "Barbearia fechada neste dia";
+          }
+        } else if (isChosen) {
+          btn.className = "h-9 text-xs rounded font-bold bg-primary-container text-on-primary-container ring-2 ring-primary-container amber-glow";
+        } else {
+          btn.className = "h-9 text-xs rounded bg-[#15181D] hover:bg-primary-container/20 hover:text-primary text-on-surface border border-[#292D33]/60 transition-colors";
+        }
+
+        if (!btn.disabled) {
+          btn.onclick = () => {
+            selectedDate = dateObj;
+            // REGRA: Ao trocar de data, limpa o horário selecionado automaticamente
+            selectedTime = null;
+            renderCalendar();
+            renderTimeSlots();
+            updateTicketLive();
+          };
+        }
+
+        grid.appendChild(btn);
+      }
+    }
+
+    function updateDateDisplayBadge() {
+      const badge = document.getElementById("selectedDateDisplayBadge");
+      if (badge && selectedDate) {
+        const dayStr = String(selectedDate.getDate()).padStart(2, '0');
+        const monthStr = String(selectedDate.getMonth() + 1).padStart(2, '0');
+        const yearStr = selectedDate.getFullYear();
+        badge.textContent = `Data Selecionada: ${dayStr}/${monthStr}/${yearStr}`;
+      }
+    }
+
+    // 3. GRADE DE HORÁRIOS INTERATIVOS
+    function renderTimeSlots() {
+      const grid = document.getElementById("timeSlotsGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      AVAILABLE_HOURS.forEach(slot => {
+        const isSelected = selectedTime === slot;
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = slot;
+
+        if (isSelected) {
+          btn.className = "py-2.5 px-3 rounded text-sm font-bold bg-primary-container text-on-primary-container border border-primary-container amber-glow transition-all";
+        } else {
+          btn.className = "py-2.5 px-3 rounded text-sm font-medium bg-[#121315] text-on-surface border border-[#292D33] hover:border-primary-container/60 hover:text-primary transition-all";
+        }
+
+        btn.onclick = () => {
+          selectedTime = slot;
+          renderTimeSlots();
+          updateTicketLive();
+        };
+
+        grid.appendChild(btn);
+      });
+    }
+
+    // 4. MÁSCARA DINÂMICA DE WHATSAPP (PT-BR)
+    function formatAndSyncPhone(input) {
+      let v = input.value.replace(/\D/g, "");
+      if (v.length > 11) v = v.slice(0, 11);
+
+      if (v.length > 6) {
+        input.value = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+      } else if (v.length > 2) {
+        input.value = `(${v.slice(0, 2)}) ${v.slice(2)}`;
+      } else if (v.length > 0) {
+        input.value = `(${v}`;
+      } else {
+        input.value = "";
+      }
+      updateTicketLive();
+    }
+
+    // 5. ATUALIZAÇÃO EM TEMPO REAL DO COMPROVANTE (TICKET LUXO)
+    function updateTicketLive() {
+      // Serviço e Valor
+      if (selectedService) {
+        document.getElementById("ticketService").textContent = selectedService.title;
+        document.getElementById("ticketPrice").textContent = `R$ ${selectedService.price.toFixed(2).replace('.', ',')}`;
+        document.getElementById("ticketDuration").textContent = selectedService.duration;
+      }
+
+      // Data formatada
+      if (selectedDate) {
+        const dia = String(selectedDate.getDate()).padStart(2, '0');
+        const mes = String(selectedDate.getMonth() + 1).padStart(2, '0');
+        const ano = selectedDate.getFullYear();
+        document.getElementById("ticketDate").textContent = `${dia}/${mes}/${ano}`;
+      } else {
+        document.getElementById("ticketDate").textContent = "Pendente";
+      }
+
+      // Horário
+      document.getElementById("ticketTime").textContent = selectedTime ? selectedTime : "--:--";
+
+      // Nome
+      const nameVal = document.getElementById("clientName") ? document.getElementById("clientName").value.trim() : "";
+      document.getElementById("ticketClient").textContent = nameVal || "Pendente";
+
+      // Telefone
+      const phoneVal = document.getElementById("clientPhone") ? document.getElementById("clientPhone").value.trim() : "";
+      document.getElementById("ticketPhone").textContent = phoneVal || "--";
+
+      // Observações
+      const notesVal = document.getElementById("clientNotes") ? document.getElementById("clientNotes").value.trim() : "";
+      document.getElementById("ticketNotes").textContent = notesVal || "Nenhuma observação informada.";
+    }
+
+    // 6. DISPARO VIA WHATSAPP (MENSAGEM ESTRUTURADA)
+    function handleFinalSubmit(e) {
+      if (e) e.preventDefault();
+      executeWhatsAppSend();
+    }
+
+    function handleTicketDirectSubmit() {
+      // Se os campos ainda não foram preenchidos, direciona para etapa 4
+      const nameVal = document.getElementById("clientName") ? document.getElementById("clientName").value.trim() : "";
+      const phoneVal = document.getElementById("clientPhone") ? document.getElementById("clientPhone").value.trim() : "";
+
+      if (!selectedService) {
+        goToStep(1);
+        return;
+      }
+      if (!selectedDate) {
+        goToStep(2);
+        return;
+      }
+      if (!selectedTime) {
+        goToStep(3);
+        return;
+      }
+      if (!nameVal || !phoneVal) {
+        goToStep(4);
+        alert("Por favor, informe seu Nome e WhatsApp na Etapa 04 para concluir.");
+        return;
+      }
+
+      executeWhatsAppSend();
+    }
+
+    function executeWhatsAppSend() {
+      const nameVal = document.getElementById("clientName").value.trim();
+      const phoneVal = document.getElementById("clientPhone").value.trim();
+      const notesVal = document.getElementById("clientNotes").value.trim() || "Nenhuma";
+
+      if (!selectedService || !selectedDate || !selectedTime || !nameVal || !phoneVal) {
+        alert("Preencha todos os campos obrigatórios antes de solicitar o agendamento.");
+        return;
+      }
+
+      const dia = String(selectedDate.getDate()).padStart(2, '0');
+      const mes = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      const ano = selectedDate.getFullYear();
+      const dataFormatada = `${dia}/${mes}/${ano}`;
+      const precoFormatado = `R$ ${selectedService.price.toFixed(2).replace('.', ',')}`;
+
+      // Mensagem conforme especificação
+      const rawMessage = `Olá, TIBU BARBER! 💈\nGostaria de solicitar um agendamento.\n\n✂️ Serviço: ${selectedService.title}\n💰 Valor: ${precoFormatado}\n📅 Data: ${dataFormatada}\n🕒 Horário: ${selectedTime}\n👤 Nome: ${nameVal}\n📱 Telefone: ${phoneVal}\n📝 Observação: ${notesVal}\n\nPoderia confirmar a disponibilidade desse horário? Obrigado!`;
+
+      const encodedMessage = encodeURIComponent(rawMessage);
+      const targetPhone = barberWhatsAppNumber.replace(/\D/g, "");
+      const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedMessage}`;
+
+      // Abre WhatsApp em nova aba
+      window.open(whatsappUrl, "_blank");
+    }
+
+    // 7. DEMO MODE E MODAL DE NÚMERO DO BARBEIRO
+    function toggleDemoMode() {
+      isDemoMode = !isDemoMode;
+      const dot = document.getElementById("demoDot");
+      const text = document.getElementById("demoText");
+
+      if (isDemoMode) {
+        dot.className = "w-2 h-2 rounded-full bg-emerald-400";
+        text.textContent = "DEMO ATIVA";
+      } else {
+        dot.className = "w-2 h-2 rounded-full bg-amber-400";
+        text.textContent = "MODO REAL";
+      }
+    }
+
+    function openBarberPhoneConfigModal() {
+      document.getElementById("barberPhoneModal").classList.remove("hidden");
+    }
+
+    function closeBarberPhoneConfigModal() {
+      document.getElementById("barberPhoneModal").classList.add("hidden");
+    }
+
+    function saveBarberPhoneConfig() {
+      const input = document.getElementById("modalPhoneInput");
+      if (input && input.value.trim()) {
+        barberWhatsAppNumber = input.value.trim();
+        document.getElementById("targetBarberDisplay").textContent = `+${barberWhatsAppNumber}`;
+        closeBarberPhoneConfigModal();
+        alert("Número do barbeiro atualizado com sucesso!");
+      }
+    }
+  </script>
+</body></html>
